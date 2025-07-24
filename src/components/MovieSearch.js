@@ -2,7 +2,9 @@ import { useState } from "react";
 
 import { Box, TextField, Autocomplete } from '@mui/material';
 
-import './App.css';
+import MovieResult from "./MovieResult";
+
+// import './App.css';
 
 
 let movies = [
@@ -39,6 +41,7 @@ function App() {
                     onInputChange={onMovieSearch}
                     renderInput={(params) => <TextField {...params} label="Movie Search" />}
                 />
+                <MovieResult results={moviesOptions} movies={moviesOptions} movieResult={moviesOptions} />
             </Box>
         </div>
     );

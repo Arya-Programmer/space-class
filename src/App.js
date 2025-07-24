@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Typography, Box, Button, Grid } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 
+import MovieSearch from "./components/MovieSearch"
 import './App.css';
 
 
@@ -13,6 +14,7 @@ function App() {
         setProgress(previousProgress => previousProgress + 1);
     }
 
+    // return <><MovieSearch /></>
     return (
         <div className="App">
             <Grid
@@ -24,7 +26,7 @@ function App() {
                 sx={{ minHeight: '100vh' }}
             >
                 <Grid item xs={3}>
-                    <Button onClick={handleIncreaseProgress} variant="contained">Contained</Button>
+                    <Button onClick={handleIncreaseProgress} variant="contained">Increment Progress</Button>
                 </Grid>
                 <Grid item xs={3} sx={{ minWidth: "50vw" }}>
                     <Box sx={{ width: '100%' }}>
