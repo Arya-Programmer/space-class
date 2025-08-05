@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 import sampleData from "../../sample-data.js";
 
@@ -7,15 +7,63 @@ import "./simple-table.css";
 
 
 const SimpleTable = () => {
+    const [showAddForm, setShowAddForm] = useState(false);
+
+
+
     return (
         <div className="users-table-container">
             {/* Table title part */}
             <div className="table-header">
                 <h2>Users Management</h2>
                 <div className="table-controls">
-
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        value={""}
+                        onChange={null}
+                        className="search-input"
+                    />
+                    <button onClick={() => setShowAddForm(prev => !prev)} className="btn btn-primary">
+                        Add User
+                    </button>
                 </div>
             </div>
+
+            {showAddForm === true &&
+                <div className="add-user-form">
+                    <h3>Add New User</h3>
+                    <form onSubmit={handleUserForm}>
+                        <div className="form-row">
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                value={newUser.name}
+                                onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+                                className="form-input"
+                                required
+                            />
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                value={newUser.email}
+                                onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+                                className="form-input"
+                                required
+                            />
+                            <select
+                                value={newUser.role}
+                                onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+                                className="form-select"
+                            >
+                                <option value="User">User</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Moderator">Moderator</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            }
 
             {/* Table headers */}
             <div className="table-wrapper">
